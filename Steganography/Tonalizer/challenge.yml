@@ -33,7 +33,7 @@ flags:
     # A static case insensitive flag
     - {
         type: "static",
-        content: "MCTF{e82f151981e37d9fdf7fce36d2299f41}",
+        content: "MCTF{hiddenintones}",
         data: "case_insensitive",
     }
     # A regex case insensitive flag

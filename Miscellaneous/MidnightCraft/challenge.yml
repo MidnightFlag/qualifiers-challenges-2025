@@ -1,11 +1,7 @@
 name: "MidnightCraft 1/2"
 author: "BIEN_SUR"
 category: Misc
-description: "A new minecraft server has opened its gates and appears to be connected to a showcase website.<br>
-Compromise it to discover what was meant to stay hidden.
-<br><br>
-Deployment : https://deploy.midnightflag.fr
-<br><br>
+description: "A new minecraft server has opened its gates and appears to be connected to a showcase website.<br> Compromise it to discover what was meant to stay hidden. <br><br> Deployment : http://deploy.midnightflag.fr <br><br> For your information, when you launch the challenge, 3 ports will be available: <ul><li>\"py-mctf\" port is the showcase website </li><li> \"mc-mctf\" contains two ports. First one is the Minecraft server </li> <li> Second one will be prompted to you when reaching the website </li></ul><br><br>"
 Format : **MCTF{Flag}**<br>
 Author : **BIEN_SUR**"
 attribution: Written by [author]
