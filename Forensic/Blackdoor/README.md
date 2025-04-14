@@ -1,6 +1,6 @@
 # Blackdoor
 
-Download the VM here: https://drive.proton.me/urls/86T84ANA0R#p6cvlAUqA7US
+Download the VM here: https://drive.proton.me/urls/86T84ANA0R#p6cvlAUqA7US (zip password: `insurrection`)
 Writeups: - https://phoen1x.fr/p/blackdoor/ 
           - https://github.com/Niceclear/CTF-Writeups/blob/main/Writeups/Midnight-Flag-2025/Forensic/Blackdoor/Blackdoor%20-%20Forensic.md
 
