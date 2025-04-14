@@ -1,0 +1,58 @@
+name: "Count on Me"
+author: "Vozec"
+category: Crypto
+description: "
+---[DECRYPTION KEY ACCEPTED: LEVEL S-Ω]---<br>
+---[CONNECTION ESTABLISHED: NEURAL LINK ACTIVE]---
+<br><br>
+    “Yo, netrunner. You just jacked into something way bigger than your usual corpo backdoor. I got my hands on a KyberSys data fragment—encrypted. Normally unbreakable. But those neon-suited meatbags slipped up and made a rookie mistake.”
+<br><br>
+---[END TRANSMISSION]---
+<br><br>
+Deployment : https://deploy.midnightflag.fr
+<br><br>
+<br><br>
+https://static1.midnightflag.fr/Cryptography/app.py <br>
+https://static2.midnightflag.fr/Cryptography/app.py <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **Vozec**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+
+flags:
+    # A static case sensitive flag
+    - MCTF{PaddingOracleOnCTR}
+    # A static case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - app.py
+
+state: visible
+version: "0.1"

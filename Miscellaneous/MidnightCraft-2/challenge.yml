@@ -1,0 +1,47 @@
+name: "MidnightCraft 2/2"
+author: "BIEN_SUR"
+category: Misc
+description: "Well done on getting operator! With your new permissions, can you help us to reveal the identity of the owner of the server?
+<br><br>
+Deployment : https://deploy.midnightflag.fr
+<br><br>
+Format : **MCTF{&lt;uuid&gt;:&lt;username&gt;}**<br>
+Author : **BIEN_SUR**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+flags:
+    # A static case sensitive flag
+    - MCTF{5fc9fa58-db9b-356e-910a-1bdbcc5d6f4e:iloveflagg}
+    # A static case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Medium
+
+requirements:
+    - "MidnightCraft 1/2"
+
+state: visible
+version: "0.1"

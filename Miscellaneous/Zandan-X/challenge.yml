@@ -1,0 +1,54 @@
+name: "Zandan-X"
+author: "Oposs"
+category: Misc
+description: "NeuraTek implemented a state-of-the-art security system known as <strong>Zandan-X</strong>.
+<br><br>
+You, as an elite hacker of the underground resistance, have intercepted a strange service running on one of their terminals.This service appears to execute arbitrary Python code, but something is off...
+<br><br>
+Press enter two times to send your code.
+<br><br>
+Deployment : https://deploy.midnightflag.fr
+<br><br>
+https://static1.midnightflag.fr/Misc/zandan-x.py <br>
+https://static2.midnightflag.fr/Misc/zandan-x.py <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **0poss**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+flags:
+    # A static case sensitive flag
+    - MCTF{py7h0n_3xc3p710n_4r3_50000_und3rr473d}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Hard
+
+# files:
+#     - src/zandan-x.py
+
+state: visible
+version: "0.1"

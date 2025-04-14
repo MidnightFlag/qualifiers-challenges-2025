@@ -1,0 +1,55 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "APT 1337"
+author: "Lamarr"
+category: Forensic
+description: "I think the server is compromised, I'm noticing weird things when I ssh into my server, that's probably where I need to start looking!
+<br><br>
+https://static1.midnightflag.fr/Forensic/apt-1337.zip <br>
+https://static2.midnightflag.fr/Forensic/apt-1337.zip <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **Lamarr**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    - MCTF{1n0d3_4nd_v0l4t1lity_4re_r3alLY_P0w3rfu11}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Medium
+
+# files:
+#     - src/apt-1337.zip
+
+state: visible
+version: "0.1"

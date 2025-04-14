@@ -1,0 +1,19 @@
+services:
+  blockchain_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sublocku
+    container_name: sublocku_container
+    restart: unless-stopped
+    ports:
+      - "80:80" 
+    cpus: 1
+    mem_limit: 2048m
+
+    networks:
+      - sublocku-network
+
+networks:
+  sublocku-network:
+    driver: bridge

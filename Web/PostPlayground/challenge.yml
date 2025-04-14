@@ -1,0 +1,50 @@
+name: "Post Playground"
+author: "Worty"
+category: Web
+description: "Super secure futurist request maker, sounds great ?
+<br><br>
+Deployment : https://deploy.midnightflag.fr
+<br><br>
+https://static1.midnightflag.fr/Web/postplayground.zip <br>
+https://static2.midnightflag.fr/Web/postplayground.zip <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **Worty**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+     initial: 500
+     decay: 100
+     minimum: 50
+
+flags:
+    # A static case sensitive flag
+    - MCTF{09fd5e94f935d82942ad5069aae09920}
+    # A static case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Medium
+
+# files:
+#     - dst/source-postplayground.zip
+
+state: visible
+version: "0.1"

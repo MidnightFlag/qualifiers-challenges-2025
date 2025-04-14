@@ -1,0 +1,56 @@
+name: "NeuraTek"
+author: "Atao"
+category: Reverse
+description: "
+NeuraTek released a new way to protect files : NeuraTek.<br>
+Try to find what this mysterious file contains
+br><br>
+https://static1.midnightflag.fr/Reverse/neurasecrets <br>
+https://static2.midnightflag.fr/Reverse/neurasecrets <br>
+https://static1.midnightflag.fr/Reverse/flag.txt.enc <br>
+https://static2.midnightflag.fr/Reverse/flag.txt.enc <br>
+<br>
+Format : **MCTF{...}**<br>
+Author : **Atao**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    - MCTF{NeuraTekShouldHireBetterDevs}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Hard
+
+# files:
+#     - dst/NeuraTek     # Le elf là
+#     - dst/flag.txt.enc # A générer aussi ?
+
+state: visible
+version: "0.1"

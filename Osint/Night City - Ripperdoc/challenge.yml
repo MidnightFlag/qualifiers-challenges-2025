@@ -1,0 +1,57 @@
+name: "Night City - Ripperdoc"
+author: "KØDΛ"
+category: Osint
+description: "Your preferred Edgerrunner has sent you this message :
+<br><br>
+Hi Choum, I saw your mission request. I have an appointment with my ripperdoc to collect the reward of my mission.<br>
+My ripperdoc is less than a kilometer from my position.<br>
+Meet me at the nearest bar !
+<br><br>
+https://static1.midnightflag.fr/Osint/Reward.png <br>
+https://static2.midnightflag.fr/Osint/Reward.png <br>
+<br>
+Format : **MCTF{Ripperdoc's_name:Bar}**<br>
+Author : **KØDΛ**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+attempts: 5
+
+flags:
+    # A static case sensitive flag
+    #- MCTF{Cassius_Rider_Totentaz}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    - {
+        type: "static",
+        content: "MCTF{Cassius_Ryder:Totentanz}",
+        data: "case_insensitive",
+    }
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - src/Reward.png
+
+state: visible
+version: "0.1"

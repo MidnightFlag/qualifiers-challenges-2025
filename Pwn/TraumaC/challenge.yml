@@ -1,0 +1,51 @@
+name: "TraumaC"
+author: "25kGoldn"
+category: Pwn
+description: "It looks like you have access to the Trauma Team paramedic interface. Maybe you can do something...
+<br><br>
+https://static1.midnightflag.fr/Pwn/TraumaC-players.zip <br>
+https://static2.midnightflag.fr/Pwn/TraumaC-players.zip <br>
+<br>
+Format : **MCTF{hash}**<br>
+Author : **25kGoldn**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    - MCTF{cc26c682cddf7f3513c71dfb361c1fc3}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Hard
+
+# files:
+#     - dst/TraumaC-players.zip
+
+state: visible
+version: "0.1"

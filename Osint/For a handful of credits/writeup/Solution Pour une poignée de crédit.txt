@@ -1,0 +1,17 @@
+Solution  Pour une poignée de crédit (facile) : 
+
+Information dans les images : Rendez-vous à un chapelier, une photo de leurs sortie est en ligne, yanis est un dev qui code que en pyton 
+il travaille chez helpbased sur des implantcybernétique, 
+
+Github search : Helpbased language:Python 
+
+aller dans séction code<> 
+
+on vois un compte avec un repo : Implantcyber de Yanis Mélodie (flag part1)
+
+sur sont compte github il a un lien vers sont printerest ou il y a une photo 
+
+lens google - yandex avec des mots clées comme Montagne lac et cadran on trouve annecy 
+
+sur annecy on regarde le chapelier le plus près et finie (flag part2)
+

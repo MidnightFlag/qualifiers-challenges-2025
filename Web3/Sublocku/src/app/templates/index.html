@@ -1,0 +1,288 @@
+<html>
+<head>
+    <title>Midnight Flag CTF</title>
+    <link rel="icon" href="https://midnightflag.fr/assets/img/favicon.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Arial', sans-serif;
+        }
+        .cyberpunk-glow {
+            text-shadow: 0 0 10px #8a2be2, 0 0 20px #8a2be2, 0 0 30px #9400d3, 0 0 40px #9400d3;
+        }
+
+        .cyberpunk-glow-green {
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+        }
+
+        .cyberpunk-border {
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+        .cyberpunk-table {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid #00ff00;
+        }
+        .cyberpunk-table tr {
+            border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+        }
+        .glitch-text {
+            position: relative;
+            color: #ffffff;
+        }
+        .copyable {
+            cursor: grab;
+            transition: all 0.3s ease;
+        }
+        .copyable:hover {
+            text-shadow: 0 0 10px #00ff00;
+            transform: scale(1.05);
+        }
+        .copy-tooltip {
+            position: fixed;
+            background-color: #00ff00;
+            color: black;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -2px 0 blue;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-anim {
+            0% { clip: rect(62px, 9999px, 54px, 0); }
+            5% { clip: rect(65px, 9999px, 54px, 0); }
+            10% { clip: rect(68px, 9999px, 54px, 0); }
+            15% { clip: rect(62px, 9999px, 54px, 0); }
+            100% { clip: rect(62px, 9999px, 54px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(62px, 9999px, 54px, 0); }
+            5% { clip: rect(65px, 9999px, 54px, 0); }
+            10% { clip: rect(68px, 9999px, 54px, 0); }
+            15% { clip: rect(62px, 9999px, 54px, 0); }
+            100% { clip: rect(62px, 9999px, 54px, 0); }
+        }
+        
+        /* Sparkle animation */
+        .sparkle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(0, 255, 0, 0) 70%);
+            border-radius: 50%;
+            animation: sparkleAnim 1.5s infinite;
+        }
+
+        @keyframes sparkleAnim {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+
+        .sparkle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body class="bg-black text-green-500">
+    <section class="py-8 px-4 mx-auto max-w-screen-xl text-center relative">
+        <div class="absolute top-0 left-0 m-4">
+            <img src="https://midnightflag.fr/assets/img/logo_midnight-flag.svg" alt="Midnight Flag Logo" class="h-16 w-16"/>
+        </div>
+
+        <h1 class="mb-4 text-6xl font-extrabold cyberpunk-glow glitch-text text-white" data-text="{{challname}}">{{challname}}</h1>
+        <p class="mb-8 text-xl text-green-300 px-16">{{description|safe}}</p>
+        
+        <div class="flex justify-center">
+            <table class="w-full max-w-2xl text-sm text-left cyberpunk-table cyberpunk-border">
+                <tbody>
+                    <tr class="border-b border-green-800/30">
+                        <th class="px-6 py-4 font-medium text-green-200 whitespace-nowrap">
+                            Your private key
+                        </th>
+                        <td class="px-6 py-4 text-green-400 copyable" data-copy="{{ key }}">
+                            {{ key }}
+                        </td>
+                    </tr>
+                    <tr class="border-b border-green-800/30">
+                        <th class="px-6 py-4 font-medium text-green-200 whitespace-nowrap">
+                            Your address
+                        </th>
+                        <td class="px-6 py-4 text-green-400 copyable" data-copy="{{ address }}">
+                            {{ address }}
+                        </td>
+                    </tr>
+                    <tr class="border-b border-green-800/30">
+                        <th class="px-6 py-4 font-medium text-green-200 whitespace-nowrap">
+                            Challenge's address
+                        </th>
+                        <td class="px-6 py-4 text-green-400 copyable" data-copy="{{ challenge }}">
+                            {{ challenge }}
+                        </td>
+                    </tr>
+                    <tr class="border-b border-green-800/30">
+                        <th class="px-6 py-4 font-medium text-green-200 whitespace-nowrap">
+                            RPC
+                        </th>
+                        <td id="rpc" class="px-6 py-4 text-green-400 copyable" data-copy="">
+                            loading...
+                        </td>
+                    </tr>
+                    <tr class="border-b border-green-800/30">
+                        <th class="px-6 py-4 font-medium text-green-200 whitespace-nowrap">
+                            Chain ID
+                        </th>
+                        <td class="px-6 py-4 text-green-400 copyable" data-copy="{{chainid}}">
+                            {{chainid}}
+                        </td>
+                    </tr>
+                    <tr class="border-b border-green-800/30">
+                        <th class="px-6 py-4 font-medium text-green-200 whitespace-nowrap">
+                            Hardfork
+                        </th>
+                        <td class="px-6 py-4 text-green-400 copyable" data-copy="{{hardfork}}">
+                            {{hardfork}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="px-6 py-4 font-medium text-green-200 whitespace-nowrap">
+                            Flag
+                        </th>
+                        <td id="flag" class="px-6 py-4 text-green-400">
+                            Not solved
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button onclick="flag()" type="button" class="mt-6 px-6 py-3 bg-green-600 hover:bg-green-700 text-black font-bold rounded-lg cyberpunk-border cyberpunk-glow-green transition-all duration-300 ease-in-out transform hover:scale-105">
+            Get the Flag
+        </button>
+
+        <div id="copyTooltip" class="copy-tooltip"></div>
+    </section>
+
+    <script>
+        // RPC loading
+        document.getElementById("rpc").innerText = 
+            (document.getElementById("rpc").dataset.copy = window.location.href.replace('#','') + 'rpc');
+
+        // Flag fetching
+        function flag() {
+            fetch('/flag')
+                .then(response => response.text())
+                .then(response => {
+                    const flagElement = document.getElementById("flag");
+                    flagElement.innerText = response;
+
+                    if (response.startsWith("MCTF")) {
+                        flagElement.classList.add('cyberpunk-glow-green');
+                        flagElement.classList.add('copyable');
+                        
+                        // Create sparkle effect
+                        createSparkles();
+                    }
+                });
+        }
+
+        // Function to create sparkles
+        function createSparkles() {
+            const sparkleContainer = document.createElement('div');
+            sparkleContainer.classList.add('sparkle-container');
+            document.body.appendChild(sparkleContainer);
+
+            // Create multiple sparkles
+            for (let i = 0; i < 40; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.top = `${Math.random() * 100}%`;
+                sparkle.style.animationDuration = `${Math.random() * 1 + 1}s`; // Random duration
+                sparkleContainer.appendChild(sparkle);
+            }
+
+            setTimeout(() => {
+                sparkleContainer.style.transition = 'opacity 1s ease-out';
+                sparkleContainer.style.opacity = '0'; // Fade out the container
+            }, 2000); // Delay a little before starting to fade
+
+
+            // Remove sparkles after animation
+            setTimeout(() => {
+                sparkleContainer.remove();
+            }, 4000);
+        }
+
+        // Copy functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const copyableElements = document.querySelectorAll('.copyable');
+            const tooltip = document.getElementById('copyTooltip');
+
+            copyableElements.forEach(el => {
+                el.addEventListener('click', (e) => {
+                    const textToCopy = e.target.dataset.copy;
+                    
+                    // Copy to clipboard
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        // Position tooltip
+                        tooltip.style.left = `${e.clientX}px`;
+                        tooltip.style.top = `${e.clientY + 10}px`;
+                        
+                        // Show tooltip
+                        tooltip.textContent = 'Copied!';
+                        tooltip.style.opacity = '1';
+
+                        // Hide tooltip after 2 seconds
+                        setTimeout(() => {
+                            tooltip.style.opacity = '0';
+                        }, 2000);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+name: "Blackdoor 1/2"
+author: "PhoeniX"
+category: Forensic
+description: "In the neon-lit depths of Neon City, a rogue NeuraTek insider has leaked a compromised workstation used by Nexus engineers. Rumors suggest a hidden backdoor within the system.
+<br><br>
+Your mission is to analyze the machine, track down the malicious binary, and retrieve its MD5 hash.<br>
+Unmask the ghost in the machine before NeuraTek covers its tracks!
+<br><br>
+PS : the attacker changed the password of the machine, you'll have to find a way to bypass it yourself.
+<br><br>
+<br><br>
+https://static1.midnightflag.fr/Forensic/blackdoor.ova <br>
+https://static2.midnightflag.fr/Forensic/blackdoor.ova <br>
+<br>
+Format : **MCTF{hash}**<br>
+Author : **PhoeniX**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    - MCTF{04c740418760eb3cdd738a4480337e03}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Hard
+
+#files:
+    #- src/Blackdoor.ova
+
+state: visible
+version: "0.1"

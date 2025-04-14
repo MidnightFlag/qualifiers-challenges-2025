@@ -1,0 +1,53 @@
+name: "NeonPulse"
+author: "25kGoldn"
+category: Pwn
+description: "New mission, try to obtain control of this panel manager allowing the propaganda of the megacorporation CYBERCORE.
+<br><br>
+Deployment : https://deploy.midnightflag.fr
+<br><br>
+https://static1.midnightflag.fr/Pwn/NeonPulse.zip <br>
+https://static2.midnightflag.fr/Pwn/NeonPulse.zip <br>
+<br>
+Format : **MCTF{...}**<br>
+Author : **25kGoldn**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    - MCTF{6559819a24c7a5fd001716afbf3c5a70}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Medium
+
+# files:
+#     - dst/NeonPulse.zip
+
+state: visible
+version: "0.1"

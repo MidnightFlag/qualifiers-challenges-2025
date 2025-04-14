@@ -1,0 +1,1 @@
+FLAG = b"MCTF{sh4r3d_pr1m3s_4r3_b4d!_u53_l4rg3_3xp0n3nts} you can also listen this https://www.youtube.com/watch?v=gRLQ5C6Yfek"

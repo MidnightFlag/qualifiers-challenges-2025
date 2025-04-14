@@ -1,0 +1,60 @@
+services:
+  mc-mctf:
+    container_name: midnightcraft
+    build:
+      context: ./mc-server
+      dockerfile: Dockerfile
+    ports:
+      - "25565:25565"
+      - "3000:3000"
+    environment:
+      - TZ=Europe/Paris
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db-mctf
+    networks:
+      - midnightcraft-network
+    env_file:
+      - ./mc-server/.env
+
+  py-mctf:
+    container_name: mctf-app
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "5002:80"
+    environment:
+      - TZ=Europe/Paris
+    restart: unless-stopped
+    depends_on:
+      - mc-mctf
+    networks:
+      - midnightcraft-network
+    env_file:
+      - ./app/.env
+
+  db-mctf:
+    build:
+      context: ./sql/
+      dockerfile: Dockerfile
+    container_name: db-mctf
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: "Europe/Paris"
+    volumes:
+      #- ./sql/data:/var/lib/mysql
+      - ./sql/Midnightcraft.sql:/docker-entrypoint-initdb.d/Midnightcraft.sql
+    networks:
+      - midnightcraft-network
+    env_file:
+      - .env
+
+networks:
+  midnightcraft-network:
+    driver: bridge

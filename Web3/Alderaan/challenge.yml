@@ -1,0 +1,55 @@
+name: "Alderaan"
+author: "Neoreo"
+category: Web3
+description: "**Welcome to the Midnight Flag 2025 Web3 category !**
+<br><br>
+![Alderaan](https://media1.tenor.com/m/9kkqsnZe7t8AAAAd/star-wars.gif)
+<br><br>
+To solve this challenge destroy it !
+<br><br>
+Deployment : https://deploy.midnightflag.fr
+<br><br>
+https://static1.midnightflag.fr/Web3/Alderaan.sol <br>
+https://static2.midnightflag.fr/Web3/Alderaan.sol <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **Neoreo**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+
+flags:
+    # A static case sensitive flag
+    - MCTF{61aa43af25584bb0c06b8be04aa8aa3a}
+    # A static case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - dst/Alderaan.sol
+
+state: visible
+version: "0.1"

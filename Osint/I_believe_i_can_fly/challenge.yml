@@ -1,0 +1,57 @@
+name: "I Believe I Can Fly"
+author: "Lamarr"
+category: Osint
+description: "1/ Find the municipalities of the springboard (ex: Puy Saint Vincent --> puy_saint_vincent)
+<br>
+2/ Name of last record holder in the springboard (ex: Jean Dupont --> jean_dupont)
+<br>
+3/ The date of the first record of the springboard (ex: 18/01/1970 --> 18-01-1970)
+<br>
+4/ The first edition of the 'Concourt International de Ski' took place (ex: 40th edition --> 40)
+<br><br>
+https://static1.midnightflag.fr/Osint/I_believe_i_can_fly.png <br>
+https://static2.midnightflag.fr/Osint/I_believe_i_can_fly.png <br>
+<br>
+Format : **MCTF{puy_saint_vincent:jean_dupont:18-01-1970:40}**<br>
+Author : **Lamarr**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+images: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    #- MCTF{lans_en_vercors:olav_ulland:08-02-1931:20}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    - {
+        type: "static",
+        content: "MCTF{lans_en_vercors:olav_ulland:08-02-1931:20}",
+        data: "case_insensitive",
+    }
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - src/I_believe_i_can_fly.png
+
+state: visible
+version: "0.1"

@@ -1,0 +1,46 @@
+@keyframes slidein {
+  from {
+      transform: translateY(20px);
+      opacity: 0;
+  }
+
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.animate-slidein100 {
+  animation: slidein 1s ease 100ms forwards;
+}
+
+.animate-slidein300 {
+  animation: slidein 1s ease 300ms forwards;
+}
+
+.animate-slidein500 {
+  animation: slidein 1s ease 500ms forwards;
+}
+
+.animate-slidein700 {
+  animation: slidein 1s ease 700ms forwards;
+}
+
+.animate-slidein900 {
+  animation: slidein 1s ease 900ms forwards;
+}
+
+.animate-slidein1100 {
+  animation: slidein 1s ease 1100ms forwards;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.section-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}

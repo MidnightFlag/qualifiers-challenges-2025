@@ -1,0 +1,53 @@
+name: "Tonalizer"
+author: "BIEN_SUR"
+category: Steganography
+description: "Mysterious frequencies have surfaced in the depths of Neon City.
+<br><br>
+Will you succeed in uncovering its secret ? It has to mean something...
+<br><br>
+https://static1.midnightflag.fr/Steganography/tonalizer.wav <br>
+https://static2.midnightflag.fr/Steganography/tonalizer.wav <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **BIEN_SUR**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    #- MCTF{}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    - {
+        type: "static",
+        content: "MCTF{e82f151981e37d9fdf7fce36d2299f41}",
+        data: "case_insensitive",
+    }
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - src/tonalizer.wav
+
+state: visible
+version: "0.1"

@@ -1,0 +1,35 @@
+name: "Sublocku"
+author: "Neoreo"
+category: Web3
+description: "To get the flag, Unlock the vault ! But wait ? Where is the grid ?
+<br><br>
+![Sublocku](https://media1.tenor.com/m/nXNHCwBK_M4AAAAC/lazy-cat.gif)
+<br><br>
+Deployment : https://deploy.midnightflag.fr
+<br><br>
+https://static1.midnightflag.fr/Web3/Sublocku.sol <br>
+https://static2.midnightflag.fr/Web3/Sublocku.sol <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **Neoreo**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+flags:
+    # A static case sensitive flag
+    - MCTF{2f5c0a0afcae1a1c5c0eadc25345f2f3}
+
+tags:
+    - Medium
+
+# files:
+#     - dst/Sublocku.sol
+
+state: visible
+version: "0.1"

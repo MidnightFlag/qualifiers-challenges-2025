@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Minecraft Server</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/panel.css') }}">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body>
+    <div class="flex">
+        <div class="sidebar">
+            <h1 class="sidebar-title">Midnight Craft</h1>
+            <nav class="mt-5">
+                <a href="#" class="nav-link active">Console</a>
+                <a href="/" class="nav-link">Home</a>
+            </nav>
+        </div>
+        <div class="main-content">
+            <h2 class="console-header">Console</h2>
+            <div id="chatBox" class="chat-box">
+                {% for log in logs[::-1] %}
+                    <p class="log-text">[{{ log[0] }}] <strong>{{ log[1] }}</strong> : {{ log[2] | safe }}</p>
+                {% endfor %}
+            </div>
+            <div class="mt-3 flex">
+                <input type="text" id="cmd" class="input-field" placeholder="Send a command..." x-model="command">
+                <button id="cmd_btn" class="send-button" type="submit">Envoyer</button>
+            </div>
+            <div id="commandResponse" class="command-response"></div>
+        </div>
+    </div>
+    <script>
+        const chatBox = document.getElementById('chatBox');
+        chatBox.scrollTop = chatBox.scrollHeight;
+    </script>
+    <script src="{{ url_for('static', filename='js/sendMinecraftCmd.js') }}"></script>
+</body>
+</html>

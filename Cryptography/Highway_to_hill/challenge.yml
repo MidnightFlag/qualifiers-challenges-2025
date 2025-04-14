@@ -1,0 +1,50 @@
+name: "Highway To Hill"
+author: "Cecile"
+category: Crypto
+description: "Our team intercepted an encrypted message and 3 random keys from the NeuraTek company. You're the best cryptologist we know.<br>
+Can you decipher the message to uncover the multinational's plans ?
+<br><br>
+https://static1.midnightflag.fr/Cryptography/hill.txt <br>
+https://static2.midnightflag.fr/Cryptography/hill.txt <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **Cecile**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+
+flags:
+    # A static case sensitive flag
+    - MCTF{4g63rth2Th2htr$h5H4gmfms22jIrjegMe}
+    # A static case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - src/hill.txt
+
+state: visible
+version: "0.1"

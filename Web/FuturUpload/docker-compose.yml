@@ -1,0 +1,16 @@
+services:
+  futurupload:
+    build: .
+    container_name: futurupload
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    cpus: 1
+    mem_limit: 1024m
+
+    networks:
+      - futurupload-network
+
+networks:
+  futurupload-network:
+    driver: bridge

@@ -1,0 +1,46 @@
+name: "MidnightCraft 1/2"
+author: "BIEN_SUR"
+category: Misc
+description: "A new minecraft server has opened its gates and appears to be connected to a showcase website.<br>
+Compromise it to discover what was meant to stay hidden.
+<br><br>
+Deployment : https://deploy.midnightflag.fr
+<br><br>
+Format : **MCTF{Flag}**<br>
+Author : **BIEN_SUR**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+flags:
+    # A static case sensitive flag
+    - MCTF{209eea248a86815d157c618dd8ef0f14}
+    # A static case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Medium
+    - Web
+
+state: visible
+version: "0.1"

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Midnight Craft</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        minecraft: '#55AA55',
+                        'minecraft-dark': '#3D8339',
+                    },
+                    fontFamily: {
+                        minecraft: ['Press Start 2P', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-900 font-minecraft flex flex-col min-h-screen">
+    <div class="flex-grow relative">
+
+        <header class="z-50 relative">
+            <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+                <div class="flex lg:flex-1">
+                    <a href="#" class="-m-1.5 p-1.5 flex items-center">
+                        <span class="sr-only">Midnight Craft</span>
+                        <img class="h-8 w-auto" src="{{ url_for('static', filename='assets/flag.png') }}"
+                            alt="Logo du serveur">
+                        <span class="ml-3 text-lg text-minecraft">Midnight Craft</span>
+                    </a>
+                </div>
+                <div class="flex lg:hidden">
+                    <button type="button"
+                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white">
+                        <span class="sr-only">Ouvrir le menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="hidden lg:flex lg:gap-x-12">
+                    <a href="#" class="text-sm font-semibold text-white hover:text-minecraft">Home</a>
+                    <a href="#" class="text-sm font-semibold text-white hover:text-minecraft">Rules</a>
+                    <a href="#" class="text-sm font-semibold text-white hover:text-minecraft">Store</a>
+                    <a href="#" class="text-sm font-semibold text-white hover:text-minecraft">Forum</a>
+                    <a href="./panel" class="text-sm font-semibold text-white hover:text-minecraft">Panel</a>
+                </div>
+                <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <a href="./login" class="text-sm font-semibold text-white hover:text-minecraft">
+                        Log in <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <section
+            class="relative flex items-center justify-center min-h-screen px-6 pt-0 lg:px-8 overflow-hidden -mt-20">
+            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
+                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] 
+                    bg-gradient-to-tr from-green-500 to-green-700 opacity-30 
+                    sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+            <div class="text-center">
+                <h1 class="text-5xl font-bold tracking-tight text-green-300 sm:text-7xl opacity-0 animate-slidein300">
+                    Join the Midnight Craft world !
+                </h1>
+                <p class="mt-8 text-lg font-medium text-white opacity-0 animate-slidein500">
+                   Discover our Minecraft server and dive into the adventure! <br> ⚠️ We are still in development... ⚠️
+                </p>
+                <div class="mt-10 flex items-center justify-center gap-x-6 opacity-0 animate-slidein700">
+                    <a href="#"
+                        class="rounded-md bg-green-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600">
+                        Join the server
+                    </a>
+                    <a href="#" class="text-sm font-semibold text-white hover:text-green-400">
+                        Learn more →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features"
+            class="relative xs:max-w-screen-sm sm:max-w-screen-lg max-w-screen-2xl mx-auto rounded-lg py-24 sm:py-32 section-hidden">
+            <div class="absolute inset-0 -z-10 rounded-lg bg-gradient-to-tr from-green-600 to-green-950 opacity-30">
+            </div>
+
+            <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl lg:text-center">
+                    <h2 class="text-base/7 font-semibold text-minecraft">Join us</h2>
+                    <p
+                        class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-balance">
+                        Everything you need to experience Minecraft differently
+                    </p>
+                    <p class="mt-6 text-lg/8 text-white">
+                        Dive into the world of Midnight Craft and discover a server optimized to deliver a unique gaming experience, where every moment counts.
+                    </p>
+                </div>
+
+                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+                    <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+                        <div class="relative pl-16 opacity-0 feature-item">
+                            <dt class="text-base/7 font-semibold text-white">
+                                <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-minecraft">
+                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 20l9-5-9-5-9 5 9 5z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 12l9-5-9-5-9 5 9 5z" />
+                                    </svg>
+                                </div>
+                                Innovative Gameplay
+                            </dt>
+                            <dd class="mt-2 text-base/7 text-white">
+                                Original quests, dynamic events, and a redesigned game system to offer unique adventures.
+                            </dd>
+                        </div>
+
+                        <div class="relative pl-16 opacity-0 feature-item">
+                            <dt class="text-base/7 font-semibold text-white">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-minecraft">
+                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M17 20h5v-2a4 4 0 0 0-3-3.87M9 20H4v-2a4 4 0 0 1 3-3.87M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" />
+                                    </svg>
+                                </div>
+                                Passionate Community
+                            </dt>
+                            <dd class="mt-2 text-base/7 text-white">
+                                Join thousands of motivated players and share your experiences in a friendly and always active environment.
+                            </dd>
+                        </div>
+
+                        <div class="relative pl-16 opacity-0 feature-item">
+                            <dt class="text-base/7 font-semibold text-white">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-minecraft">
+                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M7 8h10M7 12h10M7 16h10" />
+                                    </svg>
+                                </div>
+                                Exclusive Events
+                            </dt>
+                            <dd class="mt-2 text-base/7 text-white">
+                                Participate in competitions, mini-games, and special events organized by the team to reward your loyalty.
+                            </dd>
+                        </div>
+
+                        <div class="relative pl-16 opacity-0 feature-item">
+                            <dt class="text-base/7 font-semibold text-white">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-minecraft">
+                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 2l4 4-4 4-4-4 4-4z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 14v7" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 18h6" />
+                                    </svg>
+                                </div>
+                                Advanced Security
+                            </dt>
+                            <dd class="mt-2 text-base/7 text-white">
+                                Enjoy a secure environment thanks to protection and moderation systems that are constantly evolving.
+                            </dd>
+                        </div>
+
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <div class="w-full">
+            <hr class="border-t border-gray-700 w-4/5 mx-auto my-12">
+        </div>
+
+        <section id="minecraft-chat-container" class="relative py-12">
+            <div class="mx-auto max-w-6xl px-6 lg:px-8">
+                <h2 class="font-bold text-green-300 mb-4">Real time Minecraft Chat</h2>
+                <p class="text-white mb-8">⚠️ Be aware that chat messages are stored! Be respectful when chatting on the server!</p>
+                <div id="solid-chat-box"
+                    class="bg-gray-800 text-green-500 font-mono p-4 rounded border border-green-700 shadow-lg max-w-full overflow-y-auto h-48">
+                </div>
+                <button id="send-report-btn" class="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                    Report abusive language
+                </button>
+                <div id="report-response" class="mt-4 text-yellow-300 font-mono"></div>
+            </div>
+        </section>
+
+        <footer class="bg-gray-900">
+            <div class="container mx-auto px-4 py-4 text-center text-sm text-white">
+                © 2025 MidnightCraft . All rights reserved.
+            </div>
+        </footer>
+        <script src="{{ url_for('static', filename='js/GetChat.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/report.js') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const hiddenSections = document.querySelectorAll('.section-hidden');
+
+                const sectionObserverOptions = {
+                    threshold: 0.3
+                };
+
+                const sectionObserver = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in');
+                            entry.target.classList.remove('section-hidden');
+
+                            if (entry.target.id === 'features') {
+                                animateFeatures(entry.target);
+                            }
+
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, sectionObserverOptions);
+
+                hiddenSections.forEach(sec => {
+                    sectionObserver.observe(sec);
+                });
+
+
+                function animateFeatures(section) {
+                    const items = section.querySelectorAll('.feature-item');
+                    const animClasses = ['animate-slidein500', 'animate-slidein700', 'animate-slidein900', 'animate-slidein1100'];
+
+                    items.forEach((item, i) => {
+                        const anim = animClasses[i] || 'animate-slidein900';
+                        item.classList.add(anim);
+                    });
+                }
+            });
+        </script>
+        <!-- Note for developers, I have secured the session cookies ✅ -->
+</body>
+
+</html>

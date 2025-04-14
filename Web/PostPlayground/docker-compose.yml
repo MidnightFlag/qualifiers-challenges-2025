@@ -1,0 +1,20 @@
+
+services:
+  app:
+    build: ./server/
+    ports:
+      - "3000:3000"
+    working_dir: /app
+    environment:
+      - DEBUG=0
+      - PORT=3000
+      - FLAG=MCTF{09fd5e94f935d82942ad5069aae09920}
+    cpus: 1
+    mem_limit: 1024m
+
+    networks:
+      - postplayground-network
+
+networks:
+  postplayground-network:
+    driver: bridge

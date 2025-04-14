@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #0d0d0d;
+            font-family: 'Orbitron', sans-serif;
+            color: #0ff;
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #0ff;
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #ff0099;
+            text-align: center;
+        }
+
+        .form-container h1 {
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #0ff;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background: #000;
+            color: #0ff;
+            box-shadow: 0 0 10px #0ff inset;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff0099;
+            color: #000;
+            border: 2px solid #0ff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 0 10px #ff0099;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .form-container button:hover {
+            background-color: #ff00ff;
+            box-shadow: 0 0 15px #ff00ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Login</h1>
+        <p id="msg"></p>
+        <form action="/api/login" method="POST">
+            <input type="text" name="username" placeholder="Username" id="username" required>
+            <input type="password" name="password" placeholder="Password" id="password" required>
+            <button type="submit" id="submit">Login</button>
+            <p>Don't have an account ? <a href="/register">Register</a></p>
+        </form>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const msg = urlParams.get("msg");
+        const messages = {"1":"Internal server error.","2":"Username or password incorrect.","3":"Your account has been created, please log in."};
+        if(document.getElementById("content") !== null) {
+            document.getElementById("content").remove();
+        }
+        if(messages[msg] !== undefined) {
+            if(msg === "3") {
+                document.getElementById("msg").innerHTML = `<span style='color: green;' id='content'>${messages[msg]}</span>`;
+            } else {
+                document.getElementById("msg").innerHTML = `<span style='color: red;' id='content'>${messages[msg]}</span>`;
+            }
+        }
+    </script>
+</body>
+</html>

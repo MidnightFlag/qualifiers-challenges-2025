@@ -1,0 +1,56 @@
+name: "Blackdoor 2/2"
+author: "PhoeniX"
+category: Forensic
+description: "You've uncovered the backdoored binary, but NeuraTek's deception runs deeper. The malicious program isn’t just lying dormant—it’s executed on a schedule, hidden within the system’s task scheduler.
+<br><br>
+https://static1.midnightflag.fr/Forensic/blackdoor.ova <br>
+https://static2.midnightflag.fr/Forensic/blackdoor.ova <br>
+<br>
+Your next objective:<br>
+Trace the scheduled task responsible for running the backdoor and extract its unique Task Scheduler ID. Follow the digital breadcrumbs before NeuraTek wipes the evidence!<br>
+Format : **MCTF{ID}**<br>
+Author : **PhoeniX**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    - MCTF{B210D694-C8DF-490D-9576-9E20CDBC20BD}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Hard
+
+#files:
+#    - src/Blackdoor.ova
+
+requirements:
+    - "Blackdoor 1/2"
+
+state: visible
+version: "0.1"

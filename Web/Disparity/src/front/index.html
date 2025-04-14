@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is your website publicly available ?</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            margin: 0;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .cat {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            animation: rotate 1s linear infinite;
+            border-radius: 20px;
+            margin: 20px;
+        }
+
+        .cat-left {
+            top: 20px;
+            left: 20px;
+        }
+
+        .cat-right {
+            top: 20px;
+            right: 20px;
+            animation-direction: reverse; /* Tourne dans l'autre sens */
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        form {
+            background-color: #1e1e1e;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        input, button {
+            padding: 12px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        input {
+            width: 90%;
+            background-color: #2d2d2d;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            background-color: #363636;
+        }
+
+        button {
+            background-color: #6200ea;
+            color: white;
+            cursor: pointer;
+            width: 50%;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #3700b3;
+        }
+
+        #response {
+            margin-top: 20px;
+            background-color: #252525;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            max-width: 95%;
+            word-wrap: break-word;
+            line-height: 1.5;
+            max-height: 300px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        #response::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #response::-webkit-scrollbar-track {
+            background: #1e1e1e;
+            border-radius: 4px;
+        }
+
+        #response::-webkit-scrollbar-thumb {
+            background: #4a4a4a;
+            border-radius: 4px;
+        }
+
+        #response::-webkit-scrollbar-thumb:hover {
+            background: #5a5a5a;
+        }
+
+        @media (max-width: 480px) {
+            form, #response {
+                width: 90%;
+                padding: 15px;
+            }
+
+            input {
+                width: 85%;
+            }
+
+            button {
+                width: 60%;
+            }
+
+            .cat {
+                width: 60px;
+                height: 60px;
+            }
+
+            .cat-left {
+                top: 10px;
+                left: 10px;
+            }
+
+            .cat-right {
+                top: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="/cat.png" alt="Cat" class="cat cat-left">
+    <img src="/cat.png" alt="Cat" class="cat cat-right">
+    
+    <form id="urlForm">
+        <label for="url">Enter your website URL</label><br>
+        <input type="text" id="url" name="url" required placeholder="http://example.com"><br>
+        <button type="submit">Envoyer</button>
+    </form>
+    <div id="response" hidden></div>
+
+    <script>
+        document.getElementById('urlForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let url = document.getElementById('url').value;
+            document.getElementById('response').hidden = false;
+            document.getElementById('response').innerText = 'Chargement...';
+            
+            fetch('url.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: 'url=' + encodeURIComponent(url)
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('response').innerText = data;
+            })
+            .catch(error => {
+                document.getElementById('response').innerText = 'Error : ' + error;
+            });
+        });
+    </script>
+</body>
+</html>

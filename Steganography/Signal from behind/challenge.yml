@@ -1,0 +1,53 @@
+name: "Signal from behind"
+author: "BIEN_SUR"
+category: Steganography
+description: "A mysterious signal has been intercepted, originating from an abandoned deep-space array once used for interstellar communication: the Arecibo Transmitter.
+<br><br>
+At first, it seemed like nothing more than a background noise but if we listen closely it looks like someone, or something, was trying to make contact...
+<br><br>
+https://static1.midnightflag.fr/Steganography/arecibo.wav <br>
+https://static2.midnightflag.fr/Steganography/arecibo.wav <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **BIEN_SUR**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    #- MCTF{}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    - {
+        type: "static",
+        content: "MCTF{4R3C1B0_1S_CL3VER}",
+        data: "case_insensitive",
+    }
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Hard
+
+# files:
+#     - src/arecibo.wav
+
+state: visible
+version: "0.1"

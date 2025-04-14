@@ -1,0 +1,50 @@
+name: "Disparity"
+author: "Neoreo"
+category: Web
+description: "I only trust what I see and, guess what ? I don't see any vulnerability in my app.
+<br><br>
+Deployment : https://deploy.midnightflag.fr
+<br><br>
+https://static1.midnightflag.fr/Web/Disparity.zip <br>
+https://static2.midnightflag.fr/Web/Disparity.zip <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **Neoreo**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+flags:
+    # A static case sensitive flag
+    - MCTF{b82189df59a7ff9eee7447e4feb78165}
+    # A static case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - dst/Disparity-player.zip
+
+state: visible
+version: "0.1"

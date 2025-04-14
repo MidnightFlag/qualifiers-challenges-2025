@@ -1,0 +1,53 @@
+name: "A²+B²=C"
+author: "Vozec"
+category: Crypto
+description: "
+https://static1.midnightflag.fr/Cryptography/out.txt <br>
+https://static2.midnightflag.fr/Cryptography/out.txt <br>
+https://static1.midnightflag.fr/Cryptography/chall.py <br>
+https://static2.midnightflag.fr/Cryptography/chall.py <br>
+<br>
+Format : **MCTF{...}**<br>
+Author : **Vozec**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    - MCTF{hardy_muskat_williams2coppersmith}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - chall.py
+#     - out.txt
+
+state: visible
+version: "0.1"

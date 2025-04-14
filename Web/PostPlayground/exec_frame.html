@@ -1,0 +1,66 @@
+<script>
+    function matchAndExtract(match, url) {
+        var rx = new RegExp(`{{${match}}}`,"g");
+        var arr = rx.exec(url);
+        return arr !== null ? arr[0] : false; 
+    }
+
+    function templateUrl(url, variables){
+        let src = `let url = "${url}";\n`;
+        for(const key in variables) {
+            if(matchAndExtract(key, url)) {
+                src += `url = url.replace("{{${key}}}","${variables[key]}");\n`;
+            }
+        }
+        var mask = {};
+        for (p in this)
+            mask[p] = undefined;
+        src += "return url;"
+        return (new Function( "with(this) { " + src + "}")).call(mask);
+    }
+
+    function sanitizeUrl(url) {
+        return url.replaceAll('"',"").replaceAll("`","");
+    }
+
+    window.addEventListener("message", async (event) => {
+        let url_to_fetch = "";
+        if(typeof(event.data) === "object" && typeof(event.data.vars) == "object" && event.data.vars.url !== undefined && event.data.vars.originUrl !== undefined) {
+            let url = sanitizeUrl(event.data.vars.url);
+            if(typeof(event.data.vars.variables) === "object") {
+                if(url.includes("{{") && url.includes("}}")) {
+                    url_to_fetch = templateUrl(url, event.data.vars.variables);
+                } else {
+                    url_to_fetch = url;
+                }
+            } else {
+                url_to_fetch = url;
+            }
+        }
+        if(url_to_fetch) {
+            let fetch_options = {
+                method: "GET",
+                headers: {}
+            };
+            if(event.data.vars.method !== undefined && typeof(event.data.vars.method) === "string") {
+                fetch_options["method"] = event.data.vars.method;
+            }
+            if(fetch_options["method"] != "GET" && event.data.vars.body !== undefined && typeof(event.data.vars.body) === "object") {
+                fetch_options["body"] = event.data.vars.body;
+            }
+            if(event.data.vars.headers !== undefined && typeof(event.data.vars.headers) === "object") {
+                fetch_options["headers"] = event.data.vars.headers;
+            }
+            let fetch_res = await fetch(url_to_fetch, fetch_options)
+            .then(async (resp) => {
+                return {"status":true, "result": await resp.text()};
+            })
+            .catch((err) => {
+                return {"status":false, "err":err};
+            });
+            window.top.postMessage({"action":"result","vars":fetch_res}, event.data.vars.originUrl);
+        } else {
+            window.top.postMessage({"action":"result","vars":"Something wrong happend."}, event.data.vars.originUrl);
+        }
+    });
+</script>

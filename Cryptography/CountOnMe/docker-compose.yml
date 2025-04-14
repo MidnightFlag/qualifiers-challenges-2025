@@ -1,0 +1,17 @@
+services:
+  python-app:
+    build:
+      context: .
+    environment:
+      - FLAG=MCTF{PaddingOracleOnCTR}
+    ports:
+      - "1337:1337" 
+    cpus: 0.5
+    mem_limit: 512m
+
+    networks:
+      - countonme-network
+
+networks:
+  countonme-network:
+    driver: bridge

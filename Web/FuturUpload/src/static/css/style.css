@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    background-color: #0d0d0f;
+    color: #f0f0f0;
+    font-family: 'Orbitron', sans-serif;
+    padding: 40px;
+}
+
+h1, h2, h3 {
+    color: #00ffe7;
+    text-shadow: 0 0 5px #00ffe7;
+}
+
+a {
+    color: #ff00ff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+input, button {
+    background-color: #1a1a2e;
+    border: 1px solid #00ffe7;
+    color: #00ffe7;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    width: 100%;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #00ffe7;
+    color: #0d0d0f;
+    cursor: pointer;
+}
+
+ul.error {
+    color: red;
+    list-style: none;
+}
+
+#breadcrumb {
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.item {
+    background: #1f1f2e;
+    border: 1px solid #00ffe7;
+    border-radius: 12px;
+    padding: 20px;
+    width: 150px;
+    text-align: center;
+    color: #f0f0f0;
+    box-shadow: 0 0 10px #00ffe766;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00ffe7aa;
+}
+
+.item-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+button[type="submit"] {
+    width: auto;
+    padding: 10px 20px;
+    margin-left: 20px;
+}
+
+.item button {
+    margin-top: 5px;
+    padding: 4px 8px;
+    font-size: 14px;
+    background-color: transparent;
+    border: 1px solid #ff0055;
+    color: #ff0055;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+.item button:hover {
+    background-color: #ff0055;
+    color: black;
+    cursor: pointer;
+}
+
+.actions {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.actions button {
+    background-color: #111;
+    color: #00ffe7;
+    border: 1px solid #00ffe7;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Orbitron', sans-serif;
+    transition: 0.2s;
+}
+
+.actions button:hover {
+    background-color: #00ffe7;
+    color: black;
+    cursor: pointer;
+}
+
+input[type="file"].swal2-input {
+    background-color: #1a1a2e !important;
+    border: 1px solid #00ffe7 !important;
+    color: #00ffe7;
+    padding: 8px;
+    border-radius: 6px;
+    font-family: 'Orbitron', sans-serif;
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.swal2-input:focus {
+    box-shadow: none !important;
+    border-color: #00ffe7 !important;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    margin: 0;
+    border: none;
+}

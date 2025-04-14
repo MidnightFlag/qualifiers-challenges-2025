@@ -1,0 +1,31 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>My Files</title>
+
+    <script src="/static/js/sweetalert.js"></script>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>Welcome {{ username }}</h1>
+        <form action="/logout" method="post" style="margin: 0;">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+
+    <div id="breadcrumb" style="margin-bottom: 20px;"></div>
+
+    <h2>Folders</h2>
+    <div class="grid" id="folders"></div>
+
+    <h2>Files</h2>
+    <div class="grid" id="files"></div>
+
+    <div class="actions">
+        <button onclick="openCreateFolder()">+ Create Folder</button>
+        <button onclick="openUploadFile()">⬆️ Upload File</button>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

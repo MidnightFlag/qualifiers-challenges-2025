@@ -1,0 +1,49 @@
+name: "Welcome"
+author: "PhoeniX"
+category: Misc
+description: "Welcome to the MidnightFlag CTF 2025.<br>
+<br>
+Do you know the rules ?<br>
+<br>
+Format : **MCTF{...}**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    - MCTF[W3lc0m3_t0_M1dn1gh7!!}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Very easy
+
+#files:
+    #- src/Blackdoor.ova
+
+state: visible
+version: "0.1"

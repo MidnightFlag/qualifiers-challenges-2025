@@ -1,0 +1,21 @@
+services:
+  python-challenge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "1337:1337"
+    restart: unless-stopped
+    container_name: python-challenge
+    volumes:
+      - ./src:/app/src
+    environment:
+      - PYTHONUNBUFFERED=1
+    cpus: 0.5
+    mem_limit: 1024m
+    networks:
+      - zandanx-network
+
+networks:
+  zandanx-network:
+    driver: bridge

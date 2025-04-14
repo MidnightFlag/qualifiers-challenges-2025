@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #0d0d0d;
+            font-family: 'Orbitron', sans-serif;
+            color: #0ff;
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #0ff;
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #ff0099;
+            text-align: center;
+        }
+
+        .form-container h1 {
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #0ff;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background: #000;
+            color: #0ff;
+            box-shadow: 0 0 10px #0ff inset;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff0099;
+            color: #000;
+            border: 2px solid #0ff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 0 10px #ff0099;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .form-container button:hover {
+            background-color: #ff00ff;
+            box-shadow: 0 0 15px #ff00ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Register</h1>
+        <p id="msg"></p>
+        <form action="/api/register" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+            <p>Already have an account ? <a href="/login">Login</a></p>
+        </form>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const msg = urlParams.get("msg");
+        const messages = {"1":"Internal server error.","2":"This username already exists."};
+        if(messages[msg] !== undefined) {
+            document.getElementById("msg").innerHTML = `<span style='color: red;'>${messages[msg]}</span>`;
+        }
+    </script>
+</body>
+</html>

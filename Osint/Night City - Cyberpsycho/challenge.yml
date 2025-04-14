@@ -1,0 +1,58 @@
+name: "Night City - Cyberpsycho"
+author: "KØDΛ"
+category: Osint
+description: "Your received a call from your friend V during your holidays in Night City :
+<br><br>
+Hi Choum, I am on a mission and I need your help !<br>
+I am trying to recover a **Perk Shard** but I got called in for a damn Cyberpsycho who's wreaking havoc not far from my position.<br>
+I don't have the time to go there, I'm getting shot at from all sides by drones !<br>
+I send you a photo of my position, can you get some info on the cyberpsycho ?
+<br><br>
+https://static1.midnightflag.fr/Osint/Mission.png <br>
+https://static2.midnightflag.fr/Osint/Mission.png <br>
+<br>
+Format : **MCTF{The_mission_name:cyberpsycho_name}**<br>
+Author : **KØDΛ**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+attempts: 5
+
+flags:
+    # A static case sensitive flag
+    #- MCTF{Cassius_Rider_Totentaz}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    - {
+        type: "static",
+        content: "MCTF{Six_Feet_Under:Lely_Hein}",
+        data: "case_insensitive",
+    }
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - src/Mission.png
+
+state: visible
+version: "0.1"

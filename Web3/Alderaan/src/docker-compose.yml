@@ -1,0 +1,19 @@
+services:
+  blockchain_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: alderaan
+    container_name: alderaan_container
+    restart: unless-stopped
+    ports:
+      - "80:80" 
+    cpus: 1
+    mem_limit: 2048m
+
+    networks:
+      - alderaan-network
+
+networks:
+  alderaan-network:
+    driver: bridge

@@ -1,0 +1,59 @@
+name: "HALL OF FLAGS 2/2"
+author: "An0nymoX"
+category: Osint
+description: "<strong>Signal lost... Attempting data reconstruction...</strong>
+<br><br>
+A new anomaly has surfaced in the MIDNIGHT underground network. A second ripple in the archives of a forgotten trainer. Someone has rewritten history, leaving behind the remnants of another legendary battle.
+<br><br>
+The Hall of Fame has been altered. A <b>new team</b> now stands where the first champions once ruled. But this is no ordinary squad — its origin is buried deep in the digital echoes of the past.
+<br><br>
+Mission :<br>
+A save file <b>pokemon_save2.sav</b> has been intercepted. Identify the new team that conquered the Hall of Fame. But your task doesn't end there. This team has a history, a legacy forged in the heat of battle.<br>
+<strong>Find out when it was created.</strong>
+<br><br>
+https://static1.midnightflag.fr/Osint/pokemon_save2.sav <br>
+https://static2.midnightflag.fr/Osint/pokemon_save2.sav <br>
+<br>
+Format : **MCTF{YYYY-MM-DD}**<br>
+Author : **An0nymoX**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+flags:
+    #static case sensitive flag
+    - MCTF{2023-03-03}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "MCTF{Six_Feet_Under:Lely_Hein}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - src/pokemon_save2.sav
+
+requirements:
+    - "HALL OF FLAGS 1/2"
+
+state: visible
+version: "0.1"

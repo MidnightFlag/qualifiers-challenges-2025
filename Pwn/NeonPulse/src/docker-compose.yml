@@ -1,0 +1,19 @@
+services:
+  neon_pulse:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "1337:1337"
+    deploy:
+      resources:
+        limits:
+          cpus: 1
+          memory: 512m
+
+    networks:
+      - neonpulse-network
+
+networks:
+  neonpulse-network:
+    driver: bridge

@@ -1,0 +1,55 @@
+name: "For a handful of credits"
+author: "HuGOAT"
+category: Osint
+description: "This morning, your liaison officer woke you up with an encrypted message. He gave you a new mission. The promised credits are more than tempting.
+<br><br>
+Find the target's complete identity (first and last name) and the meeting point. I'll also give you a file with information that our teams were able to retrieve.
+<br><br>
+<img src="https://media1.tenor.com/m/6YX6KiymQPwAAAAd/lunaistabby-cowboy-cat.gif">
+<br><br>
+https://static1.midnightflag.fr/Osint/Proof_file_974563.zip <br>
+https://static2.midnightflag.fr/Osint/Proof_file_974563.zip <br>
+<br>
+Format : **MCTF{First_lastname:store_name}**<br>
+Author : **HuGOAT**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+# image: null
+# host: null
+
+flags:
+    # A static case sensitive flag
+    #- MCTF{}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    - {
+        type: "static",
+        content: "MCTF{Yanis_Melodie:Animax}",
+        data: "case_insensitive",
+    }
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - src/Proof_file_974563.zip
+
+state: visible
+version: "0.1"

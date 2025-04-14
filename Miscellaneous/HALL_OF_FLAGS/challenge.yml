@@ -1,0 +1,56 @@
+name: "HALL OF FLAGS 1/2"
+author: "An0nymoX"
+category: Misc
+description: "**Signal lost... Attempting data restoration...**
+<br><br>
+A corrupted memory fragment has resurfaced on the MIDNIGHT underground network. Battle traces, remnants of a forgotten team... An anomaly lingers within the archives of an old trainer.<br>
+The **Hall of Fame** records every victory, yet the very first entry seems to have been erased. Who were the true champions? What secrets lie buried in the depths of this save file?<br>
+Mission:<br>
+A save file **pokemon_save.sav** has been intercepted. Uncover the first team that marked the Hall of Fame. Access to this data is locked. Only the right tools can unearth these digital memories...
+<br><br>
+https://static1.midnightflag.fr/Misc/pokemon_save.sav <br>
+https://static2.midnightflag.fr/Misc/pokemon_save.sav <br>
+<br>
+Format : **MCTF{flag}**<br>
+Author : **An0nymoX**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    - MCTF{WELL-d0NE-Y0U-F0UND-HALL-0FAME}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - src/pokemon_save.sav
+
+state: visible
+version: "0.1"

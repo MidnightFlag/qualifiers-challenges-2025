@@ -1,0 +1,51 @@
+name: "BeatIt"
+author: "Neoreo"
+category: Web
+description: "You’re up against The Bot—a relentless, merciless, cold-hearted machine that plays first. Why? Because I said so.
+<br><br>
+The Rules : (That You Must Obey !)
+<br><br>
+There are 20 sticks on the table. They stare at you. You stare back.<br>
+The bot always starts. No negotiations. This is my game, my rules.<br>
+On your turn, you can remove 1, 2, or 3 sticks. Choose wisely, mortal.<br>
+The player who takes the last stick LOSES. Meaning, if you pick up that final lonely stick… it's Game Over. And the bot laughs at you. Probably...
+<br><br>
+Deployment : https://deploy.midnightflag.fr
+<br><br>
+Format : **MCTF{Flag}**<br>
+Author : **Neoreo**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+flags:
+    # A static case sensitive flag
+    - MCTF{8bbbe1d2d982b8deddab580813edf199}
+    # A static case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Very Easy
+
+state: visible
+version: "0.1"

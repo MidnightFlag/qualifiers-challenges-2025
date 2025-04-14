@@ -1,0 +1,29 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">
+                    <ul class="error">
+                        <li>{{ message }}</li>
+                    </ul>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="post" action="/api/login">
+        <input name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Log In</button>
+    </form>
+
+    <p>Don't have an account yet? <a href="/register">Register here</a></p>
+</body>
+</html>

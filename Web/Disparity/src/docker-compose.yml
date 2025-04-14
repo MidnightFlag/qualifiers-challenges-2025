@@ -1,0 +1,18 @@
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      - FLAG=MCTF{b82189df59a7ff9eee7447e4feb78165}
+    volumes:
+      - ./front:/var/www/html/front
+      - ./back:/var/www/html/back
+    networks:
+      - disparity-network
+    cpus: 1
+    mem_limit: 1024m
+
+networks:
+  disparity-network:
+    driver: bridge

@@ -1,0 +1,49 @@
+name: "NeuraTek's Secrets"
+author: "Samy"
+category: Crypto
+description: "Please infiltrate the powerful cryptographic systems of multinational NeuraTek and get the hidden evidence right noooooow!
+<br><br>
+https://static1.midnightflag.fr/Cryptography/neuratekssecrets.zip <br>
+https://static2.midnightflag.fr/Cryptography/neuratekssecrets.zip <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **Samy**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+
+flags:
+    # A static case sensitive flag
+    - MCTF{sh4r3d_pr1m3s_4r3_b4d!_u53_l4rg3_3xp0n3nts}
+    # A static case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - src/neuratekssecrets.zip
+
+state: visible
+version: "0.1"

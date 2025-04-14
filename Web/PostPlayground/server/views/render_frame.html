@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/js/sweetalert.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostPlayground - Render</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background-color: #0d0d0d;
+            color: #0ff;
+            text-shadow: 0 0 0.3em #0ff;
+        }
+
+        header {
+            background-color: #111;
+            color: #0ff;
+            padding: 1% 2%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 0 1em #0ff;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 1.5em;
+            margin: 0;
+            text-shadow: 0 0 0.6em #0ff;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            height: 90vh;
+        }
+
+        .sidebar {
+            background-color: #111;
+            width: 100%;
+            max-width: 25%;
+            padding: 2%;
+            box-shadow: 0 0 1em #0ff;
+            box-sizing: border-box;
+        }
+
+        .sidebar h2 {
+            font-size: 1.2em;
+            margin-bottom: 1em;
+            color: #f0f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-shadow: 0 0 0.6em #f0f;
+        }
+
+        .sidebar h2 button {
+            background-color: #f0f;
+            color: white;
+            border: none;
+            border-radius: 0.5em;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: 0.3s;
+            box-shadow: 0 0 1em #f0f;
+        }
+
+        .sidebar h2 button:hover {
+            background-color: #a0a;
+            box-shadow: 0 0 1.5em #f0f;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 1em;
+            padding: 1em;
+            background-color: #222;
+            border: 0.1em solid #0ff;
+            border-radius: 0.5em;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            box-shadow: 0 0 0.5em #0ff;
+            flex-wrap: wrap;
+        }
+
+        .sidebar .variable-group input {
+            padding: 0.8em;
+            font-size: 0.9em;
+            border: 0.1em solid #0ff;
+            border-radius: 0.5em;
+            flex-grow: 1;
+            background-color: #111;
+            color: #0ff;
+        }
+
+        .sidebar .variable-group button {
+            background-color: #ff0040;
+            color: white;
+            border: none;
+            border-radius: 0.5em;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: 0.3s;
+            box-shadow: 0 0 1em #ff0040;
+        }
+
+        .sidebar .variable-group button:hover {
+            background-color: #cc0000;
+            box-shadow: 0 0 1.5em #ff0040;
+        }
+
+        .project button, .projects {
+            border: none;
+            border-radius: 1em;
+            padding: 0.5em 1em;
+            font-size: 0.9em;
+            cursor: pointer;
+            width: 100%;
+            max-width: 8em;
+            height: 2.5em;
+            transition: 0.3s;
+        }
+
+        .project button {
+            background-color: #0f0;
+            color: white;
+            box-shadow: 0 0 1em #0f0;
+        }
+
+        .projects {
+            background-color: #ffae00;
+            color: white;
+            box-shadow: 0 0 1em #ffae00;
+        }
+
+        .main {
+            flex-grow: 1;
+            padding: 2%;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 75%;
+            box-sizing: border-box;
+        }
+
+        .main .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            margin-bottom: 1em;
+        }
+
+        .main .input-group input,
+        .main .input-group select {
+            padding: 0.8em;
+            font-size: 1em;
+            border: 0.1em solid #0ff;
+            border-radius: 0.5em;
+            background-color: #111;
+            color: #0ff;
+            flex: 1;
+            min-width: 10em;
+        }
+
+        .main .input-group button {
+            padding: 0.8em 1.5em;
+            font-size: 1em;
+            color: white;
+            background-color: #0ff;
+            border: none;
+            border-radius: 0.5em;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 1em #0ff;
+        }
+
+        .main .input-group button:hover {
+            background-color: #00cccc;
+            box-shadow: 0 0 1.5em #0ff;
+        }
+
+        .response {
+            flex-grow: 1;
+            margin-top: 2%;
+            background-color: #111;
+            border: 0.1em solid #0ff;
+            border-radius: 0.5em;
+            padding: 2%;
+            overflow-y: auto;
+            box-shadow: 0 0 1em #0ff;
+        }
+
+        .response pre {
+            margin: 0;
+            font-size: 0.9em;
+            color: #0ff;
+            text-shadow: 0 0 0.3em #0ff;
+        }
+    </style>
+    <script>
+        function fetchData(url, method, include) {
+            return new Promise((resolve, reject) => {
+                let xhr = new XMLHttpRequest();
+                xhr.open(method, url, true);
+                xhr.withCredentials = include;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            resolve(xhr.responseText);
+                        } else {
+                            reject("Unknown error occured");
+                        }
+                    }
+                };
+                xhr.send();
+            });
+        }
+
+        function sleep(s) {
+            return new Promise((resolve) => setTimeout(resolve, s))
+        }
+
+        let current_project_id;
+        let geval = this.execScript || eval;
+        localStorage.removeItem("vars");
+        window.addEventListener("message", async (event) => {
+            if(event.origin !== location.origin || event.origin == null) return;
+            else {
+                if(typeof(event.data) !== "object" || event.data.action === undefined || event.data.vars === undefined) {
+                    return;
+                }
+                switch(event.data.action) {
+                    case "load_variable":
+                        let backend_raw_resp;
+                        let content;
+                        if(event.data.vars.id !== undefined && event.data.vars.id !== "NULL") {
+                            backend_raw_resp = await fetchData(`/api/playground/${event.data.vars.id}`, "GET", true);
+                            try{
+                                content = JSON.parse(backend_raw_resp);
+                                if(content.status === 200) {
+                                    current_project_id = event.data.vars.id;
+                                    data = JSON.parse(atob(content["data"]["data"]));
+                                    document.getElementById("project_id_text").innerHTML = `<button onclick='saveProject()'>Save project</button> Current project id: ${current_project_id}`;
+                                    document.getElementById("url").value = data.url;
+                                    let last_inserted_id;
+                                    let subnodes;
+                                    let done;
+                                    while(typeof(loadVariableInput) !== "function") {
+                                        await sleep(0.2);
+                                    }
+                                    for(const key in data.vars_data) {
+                                        loadVariableInput(key, data.vars_data[key]);
+                                    }
+                                    parseAndExec();
+                                    break;
+                                } else {
+                                    if(content.status === 404) {
+                                        Swal.fire({
+                                            title: "PostPlayground",
+                                            text: "Playground not found, the page will reload and create a new one.",
+                                            icon: "error"
+                                        }).then(() => {
+                                            top.location.reload();
+                                        });
+                                        break;
+                                    } else {
+                                        throw Exception;
+                                    }
+                                }
+                            } catch(e) {
+                                Swal.fire({
+                                    title: "PostPlayground",
+                                    text: "An error occured, this page will be reloaded.",
+                                    icon: "error"
+                                }).then(() => {
+                                    top.location.reload();
+                                });
+                                break;
+                            }
+                        }
+                        
+                        backend_raw_resp = await fetchData("/api/playground/create", "POST", true);
+                        try {
+                            content = JSON.parse(backend_raw_resp);
+                            if(content.status != undefined && content.status === 200) {
+                                current_project_id = content.uuid;
+                            } else {
+                                throw Exception;
+                            }
+                        } catch(e) {
+                            Swal.fire({
+                                title: "PostPlayground",
+                                text: "An error occured, this page will be reloaded.",
+                                icon: "error"
+                            }).then(() => {
+                                top.location.reload();
+                            });
+                            break;
+                        }
+                        document.getElementById("project_id_text").innerHTML = `<button onclick='saveProject()'>Save project</button> Current project id: ${current_project_id}`;
+                        break;
+                    
+                    case "load_scripts":
+                        if(event.data.vars.srcs !== undefined && typeof(event.data.vars.srcs) === "object") {
+                            let script_data;
+                            let code;
+                            let script_start = "###TO_EVAL###";
+                            let script_end = "###EOF_EVAL###";
+                            event.data.vars.srcs.forEach(async (element) => {
+                                let script_data = await fetchData(location.origin+element, "GET", false);
+                                if(script_data && script_data.indexOf(script_start) > -1 && script_data.indexOf(script_end) > -1) {
+                                    code = script_data.split(script_start)[1].split(script_end)[0];
+                                    await geval(code);
+                                }
+                            });
+                        }
+                        break;
+                    case "result":
+                        document.getElementById("resp").innerText = "";
+                        if(event.data.vars !== undefined && typeof(event.data.vars) === "object") {
+                            if(event.data.vars.status) {
+                                document.getElementById("resp").innerText = event.data.vars.result;
+                            } else {
+                                document.getElementById("resp").innerText = event.data.vars.err;
+                            }
+                        } else {
+                            document.getElementById("resp").innerText = event.data.vars;
+                        }
+                        break;
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Version alpha v.0.0.1</h1>
+        <button class="projects" onclick="getProjects()">My projects</button>
+        <p id="project_id_text" class="project"></p>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Variables <button onclick="addVariableInput()">+</button></h2>
+            <ul>
+            </ul>
+        </aside>
+        <main class="main">
+            <div class="input-group">
+                <select>
+                    <option>GET</option>
+                    <option disabled>POST</option>
+                    <option disabled>PUT</option>
+                    <option disabled>DELETE</option>
+                </select>
+                <input type="text" placeholder="Enter request URL here..." id="url">
+                <button onclick="parseAndExec()">Send</button>
+            </div>
+            <div class="response" id="resp">
+                <pre>{
+    "message": "Response will appear here"
+}</pre>
+            </div>
+        </main>
+    </div>
+    <iframe hidden src="https://static1.midnightflag.fr/exec_frame.html" id="exec_frame"></iframe>
+</body>
+</html>

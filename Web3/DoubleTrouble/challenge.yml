@@ -1,0 +1,48 @@
+name: "DoubleTrouble"
+author: "Neoreo"
+category: Web3
+description: "In this challenge, you'll need to grasp every single detail of what you're doing.<br>
+No guesswork allowed.<br>
+Dive deep, analyze thoroughly, and most importantly, enjoy the process !
+<br><br>
+![DoubleTrouble](https://media1.tenor.com/m/NOmh1coKFMIAAAAd/steve-harrington-steve-confused.gif)
+<br><br>
+Deployment : https://deploy.midnightflag.fr
+<br><br>
+https://static1.midnightflag.fr/Web3/DoubleTrouble.sol <br>
+https://static2.midnightflag.fr/Web3/DoubleTrouble.sol <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **Neoreo**"
+
+attribution: Written by [author]
+
+# Valeur maximale du challenge en points
+type: dynamic
+value: 500
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+flags:
+    - MCTF{ea884d389bb8de6ec0a3764e6aa510f9}
+
+# Les topics ne sont visibles que par les admins
+# topics:
+#     - information disclosure
+#     - buffer overflow
+#     - memory forensics
+
+# Les tags sont visisbles par les joueurs et peuvent donner une idée du thème du challenge
+# Il doit y avoir au moins un tag annoncant la difficulté (Très Facile/Facile/Moyen/Difficile/Très Difficile)
+tags:
+    - Hard
+
+# Liste des fichiers à fournirs aux joueurs
+# files:
+#     - dst/DoubleTrouble.sol
+
+state: visible
+version: "0.1"

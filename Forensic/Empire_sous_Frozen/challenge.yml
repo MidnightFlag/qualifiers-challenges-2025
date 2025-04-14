@@ -1,0 +1,54 @@
+name: "Empire sous Frozen"
+author: "Anh4ckin"
+category: Forensic
+description: "We believe an attacker has broken into the Empire's Active Directory domain. The empire office provides you with logs of a domain controller (DC) in order to understand what happened.<br>
+Your objective is to determine how the attacker obtained initial access to our domain.
+<br><br>
+https://static1.midnightflag.fr/Forensic/empire_sous_frozen.txt <br>
+https://static2.midnightflag.fr/Forensic/empire_sous_frozen.txt <br>
+<br>
+Format : **MCTF{vulnerable_account_name:initial_access_attack}**<br>
+Author : **Anh4ckin** x **F4doli**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+attempts: 5
+
+flags:
+    # A static case sensitive flag
+    - MCTF{trooper:asreproasting}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - src/empire_sous_frozen.txt
+
+state: visible
+version: "0.1"

@@ -1,0 +1,50 @@
+name: "Futur Upload"
+author: "Worty"
+category: Web
+description: "Cloud storage is back in 2077, better UI and folders management !
+<br><br>
+Deployment : https://deploy.midnightflag.fr
+<br><br>
+https://static1.midnightflag.fr/Web/futurupload.zip <br>
+https://static2.midnightflag.fr/Web/futurupload.zip <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **Worty**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+flags:
+    # A static case sensitive flag
+    - MCTF{51f87124a05bc5fa4098c030495d90a1}
+    # A static case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Hard
+
+# files:
+#     - dst/source-futurupload.zip
+
+state: visible
+version: "0.1"

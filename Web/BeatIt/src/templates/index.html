@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatIt</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fdfdfd;
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff005c;
+            text-shadow: 0 0 10px #ff005c, 0 0 20px #ff005c;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #00ffe7;
+        }
+
+        #board {
+            font-size: 1.5rem;
+            letter-spacing: 0.1rem;
+            margin: 10px 0;
+            color: #ffe600;
+        }
+
+        #game_form {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ffe600;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #ff005c;
+            background: #0f0c29;
+            color: #ffe600;
+            border-radius: 5px;
+            width: 100px;
+            margin-right: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px #ff005c;
+        }
+
+        button {
+            background-color: #ff005c;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-shadow: 0 0 5px #0f0;
+            box-shadow: 0 0 15px #ff005c;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ffe600;
+            color: #0f0c29;
+            text-shadow: 0 0 10px #ffe600;
+            box-shadow: 0 0 20px #ffe600;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffe600;
+            text-align: center;
+            text-shadow: 0 0 15px #ffe600;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+            border: 2px solid #0ff;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.8);
+            width: 350px;
+            max-height: 200px;
+            overflow-y: auto;
+            box-shadow: 0 0 10px #0ff;
+        }
+
+        ul li {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+            color: #00ffe7;
+            text-shadow: 0 0 5px #00ffe7;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        ul li:nth-child(odd) {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        /* Modal background */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Modal content */
+        .modal-content {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.3s ease-in-out;
+        }
+
+        /* Close button */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Slide-down effect */
+        @keyframes slideDown {
+        from {
+            transform: translate(-50%, -60%);
+            opacity: 0;
+        }
+        to {
+            transform: translate(-50%, -50%);
+            opacity: 1;
+        }
+        }
+
+    </style>
+    <script>
+        async function playTurn() {
+            const playerChoice = document.getElementById("player_choice").value;
+            if (!playerChoice || isNaN(parseInt(playerChoice)) || playerChoice < 1 || playerChoice > 3 ) {
+                showAlert("Please select a number between 1 and 3.");
+                return;
+            }
+
+            try {
+                const response = await fetch('/play', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ player_choice: parseInt(playerChoice) })
+                });
+
+                const data = await response.json();
+                if (data.error !== undefined){
+                    showAlert(data.error);
+                    return;
+                }
+                const boardDisplay = document.getElementById("board");
+                const boardLength = document.getElementById("nbstick");
+                const resultMessage = document.getElementById("result");
+                const gameForm = document.getElementById("game_form");
+                const historyDisplay = document.getElementById("history");
+
+                // Update board
+                boardDisplay.textContent = data.board.join(" ");
+                boardLength.textContent = data.board.length;
+
+                // Update history
+                const user_move = data.win 
+                    ? "Game ended !" 
+                    : `You removed ${playerChoice} stick(s).`;
+                var historyItem = document.createElement("li");
+                historyItem.textContent = user_move;
+                historyDisplay.appendChild(historyItem);
+
+                const bot_move = `The bot removed ${data.bot_move} stick(s).`;
+                historyItem = document.createElement("li");
+                historyItem.textContent = bot_move;
+                historyDisplay.appendChild(historyItem);
+
+                
+                if (data.game_ended) {
+                    resultMessage.textContent = data.win ? `Don't get too comfortable — I'LL CRUSH YOU NEXT TIME! 😈🔥 ${data.flag}` : `You lost! Try harder! 😈`;
+                    gameForm.style.display = "none";
+                } else {
+                    resultMessage.textContent = "";
+                }
+            } catch (error) {
+                console.error(error);
+                showAlert("An error occurred. Please try again.");
+            }
+        }
+
+    function showAlert(message) {
+        const modal = document.getElementById("customAlert");
+        const alertMessage = document.getElementById("alertMessage");
+        
+        alertMessage.textContent = message;
+        modal.style.display = "block";
+        setTimeout(() => {
+            modal.style.opacity = "1";
+        }, 10);
+
+        // Close alert when clicking the close button
+        document.querySelector(".close").onclick = function () {
+            closeModal();
+        };
+
+        // Close alert when clicking outside of it
+        window.onclick = function (event) {
+            if (event.target === modal) {
+            closeModal();
+            }
+        };
+        }
+
+        function closeModal() {
+        const modal = document.getElementById("customAlert");
+        modal.style.opacity = "0";
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, 300);
+    }
+
+    </script>
+</head>
+<body>
+    <h1>Stick Game</h1>
+    <p>Remaining sticks: <strong id="nbstick">{{ board|length }}</strong></p>
+    <p id="board">{{ board|join(' ') }}</p>
+
+    <div id="game_form">
+        <label for="player_choice">How many sticks do you want to remove (1-3):</label>
+        <input type="number" id="player_choice" min="1" max="3">
+        <button onclick="playTurn()">Play</button>
+    </div>
+
+    <p id="result" style="font-weight: bold; color: red;"></p>
+    <button onclick="window.location.href='/reset'">Restart</button>
+
+    <h2>Game History</h2>
+    <ul id="history">
+        <li>Game started with 20 sticks</li>
+        <li>The bot removed 3 sticks</li>
+
+    </ul>
+
+    <div id="customAlert" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p id="alertMessage">This is an alert!</p>
+        </div>
+    </div>
+      
+
+</body>
+</html>

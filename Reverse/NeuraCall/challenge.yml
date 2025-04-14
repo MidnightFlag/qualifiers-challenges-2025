@@ -1,0 +1,52 @@
+name: "NeuraCall"
+author: "ToRr0aN"
+category: Reverse
+description: "A former NeuraTek developper, driven mad, left behind a... strange binary.<br>
+An encrypted message, a sealed flag, and logic that defies reason.
+<br><br>
+Your mission : <br>
+Understand the mind of the creator and shatter his creation.
+<br><br>
+https://static1.midnightflag.fr/Reverse/NeuraCall <br>
+https://static2.midnightflag.fr/Reverse/NeuraCall <br>
+<br>
+Format : **MCTF{Flag}**<br>
+Author : **ToRr0aN**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+flags:
+    # A static case sensitive flag
+    - MCTF{R8_1S_TH3_N3W_RD1}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "MCTF{Six_Feet_Under:Lely_Hein}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Hard
+
+# files:
+#     - src/NeuraCall
+
+state: visible
+version: "0.1"

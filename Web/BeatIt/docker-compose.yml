@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: beatit
+    container_name: beatit-container
+    ports:
+      - "8888:8888"
+    tty: true
+    environment:
+      - FLAG=MCTF{8bbbe1d2d982b8deddab580813edf199}
+    cpus: 1
+    mem_limit: 512m
+
+    networks:
+      - beatit-network
+
+networks:
+  beatit-network:
+    driver: bridge

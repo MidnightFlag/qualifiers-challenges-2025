@@ -1,0 +1,21 @@
+services:
+  trauma:
+    build:
+      cpus: 1
+      mem_limit: 512m
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4444:4444"
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512m
+
+    networks:
+      - traumac-network
+
+networks:
+  traumac-network:
+    driver: bridge

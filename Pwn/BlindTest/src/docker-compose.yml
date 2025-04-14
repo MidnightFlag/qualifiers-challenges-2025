@@ -1,0 +1,19 @@
+services:
+  blind_test:
+    cpus: 1
+    mem_limit: 512m
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    #image: blind_test 
+    container_name: blind_test
+    ports:
+      - "4444:4444"
+
+    networks:
+      - blindtest-network
+
+networks:
+  blindtest-network:
+    driver: bridge
