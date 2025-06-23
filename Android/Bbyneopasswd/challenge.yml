@@ -1,0 +1,49 @@
+name: "Bbyneopasswd"
+author: "pwnii"
+category: Android
+description: "
+bby neopasswd is a small mobile app currently under development by a group of students. Can you find the flag hidden within their early prototype?
+Format : **MCTF{...}**<br>
+Author : **pwnii**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    - MCTF{1t5_SuP3r_3asy_t0_F1nd_S3cret5}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Easy
+
+# files:
+#     - chall.py
+#     - out.txt
+
+state: visible
+version: "0.1"

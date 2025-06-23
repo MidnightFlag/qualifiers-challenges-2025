@@ -1,0 +1,49 @@
+name: "Neopasswd3"
+author: "pwnii & worty"
+category: Android
+description: "
+neopasswd3 is the most complete and playful version yet. More features, more fun… And for the anecdote, this one’s inspired by true bug in bug bounty 👀
+Format : **MCTF{...}**<br>
+Author : **pwnii**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    - MCTF{5a66684f15b18bf4973d60bc7bea912b}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Hard
+
+# files:
+#     - chall.py
+#     - out.txt
+
+state: visible
+version: "0.1"

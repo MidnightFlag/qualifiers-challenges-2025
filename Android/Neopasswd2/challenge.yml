@@ -1,0 +1,49 @@
+name: "Neopasswd2"
+author: "pwnii"
+category: Android
+description: "
+neopasswd2 is the shiny new version of the original app, now with notifications and login! The devs said it’s safe — that’s cute.<br>
+Format : **MCTF{...}**<br>
+Author : **pwnii**"
+attribution: Written by [author]
+value: 500
+type: dynamic
+
+extra:
+    initial: 500
+    decay: 100
+    minimum: 50
+
+image: null
+host: null
+
+flags:
+    # A static case sensitive flag
+    - MCTF{Th3_c4k3_1s_4_L13!}
+    #tic case sensitive flag created with a dictionary
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #}
+    # A static case insensitive flag
+    #- {
+    #    type: "static",
+    #    content: "flag{wat}",
+    #    data: "case_insensitive",
+    #}
+    # A regex case insensitive flag
+    #- {
+    #    type: "regex",
+    #    content: "(.*)STUFF(.*)",
+    #    data: "case_insensitive",
+    #}
+
+tags:
+    - Medium
+
+# files:
+#     - chall.py
+#     - out.txt
+
+state: visible
+version: "0.1"
